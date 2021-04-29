@@ -1,11 +1,13 @@
 package com.zhenmei.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zhenmei.constant.RestCode;
 import com.zhenmei.exception.BusinessException;
 import com.zhenmei.exception.SuccessException;
 import com.zhenmei.mybatis.generate.dao.TDeviceInfoDao;
 import com.zhenmei.mybatis.generate.entity.TDeviceInfoDO;
+import com.zhenmei.pojo.param.DeviceInfoAddParam;
 import com.zhenmei.pojo.param.DeviceInfoGetParam;
 import com.zhenmei.pojo.vo.DeviceInfoVo;
 import com.zhenmei.response.ServiceMultiResultVO;
@@ -51,6 +53,19 @@ public class DeviceServiceImpl implements DeviceService {
 
         throw new SuccessException(new ServiceMultiResultVO(pager.getTotal(), retList));
 
+    }
+
+    @Override
+    public void addDevice(DeviceInfoAddParam param) {
+
+
+        TDeviceInfoDO record = new TDeviceInfoDO();
+        record.setDeviceId(IdUtil.createSnowflake(1, 1).nextIdStr());
+        record.setDeviceIp(param.getDeviceIp());
+        record.setDeviceName(param.getDeviceName());
+        System.out.println(LocalDateTime.now());
+        record.setGmtCreate(LocalDateTime.now());
+        deviceInfoDao.insert(record);
     }
 
     @Override
