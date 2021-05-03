@@ -5,8 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zhenmei.constant.RestCode;
 import com.zhenmei.exception.BusinessException;
 import com.zhenmei.exception.SuccessException;
-import com.zhenmei.mybatis.generate.dao.TDeviceInfoDao;
-import com.zhenmei.mybatis.generate.entity.TDeviceInfoDO;
+import com.zhenmei.mybatis.custom.dao.CustomDeviceMapper;
+import com.zhenmei.mybatis.generate.entity.TDeviceInfoEntity;
+import com.zhenmei.mybatis.generate.mapper.TDeviceInfoMapper;
 import com.zhenmei.pojo.param.DeviceInfoAddParam;
 import com.zhenmei.pojo.param.DeviceInfoGetParam;
 import com.zhenmei.pojo.vo.DeviceInfoVo;
@@ -28,18 +29,20 @@ public class DeviceServiceImpl implements DeviceService {
 
 
     @Autowired
-    private TDeviceInfoDao deviceInfoDao;
+    private TDeviceInfoMapper deviceInfoMapper;
 
+    @Autowired
+    private CustomDeviceMapper customDeviceMapper;
 
     @Override
     public void listDevice(DeviceInfoGetParam param) {
-        Page<TDeviceInfoDO> pager = new Page<>(param.getPage(), param.getRows());
+        Page<TDeviceInfoEntity> pager = new Page<>(param.getPage(), param.getRows());
 
-        deviceInfoDao.selectPage(pager, null);
+        deviceInfoMapper.selectPage(pager, null);
 
 
         // 起名字为dbList，容易辨认该list就是数据库的实体对象类型
-        List<TDeviceInfoDO> dbList = Optional.ofNullable(pager.getRecords()).orElse(new ArrayList<>(0));
+        List<TDeviceInfoEntity> dbList = Optional.ofNullable(pager.getRecords()).orElse(new ArrayList<>(0));
 
 
         // 数据类型转换
@@ -59,17 +62,19 @@ public class DeviceServiceImpl implements DeviceService {
     public void addDevice(DeviceInfoAddParam param) {
 
 
-        TDeviceInfoDO record = new TDeviceInfoDO();
+        TDeviceInfoEntity record = new TDeviceInfoEntity();
         record.setDeviceId(IdUtil.createSnowflake(1, 1).nextIdStr());
         record.setDeviceIp(param.getDeviceIp());
         record.setDeviceName(param.getDeviceName());
         System.out.println(LocalDateTime.now());
         record.setGmtCreate(LocalDateTime.now());
-        deviceInfoDao.insert(record);
+        deviceInfoMapper.insert(record);
     }
 
     @Override
     public void getUnSuccess() {
+
+        customDeviceMapper.updateMySelf();
         throw BusinessException.builder()
                 .message("unSuccess")
                 .clientTip("你已经抢到该站火车票")
@@ -81,12 +86,12 @@ public class DeviceServiceImpl implements DeviceService {
     @Transactional
     public void testTransactional() {
 
-        TDeviceInfoDO insertRecord = new TDeviceInfoDO();
+        TDeviceInfoEntity insertRecord = new TDeviceInfoEntity();
         insertRecord.setDeviceId(UUID.randomUUID().toString());
         insertRecord.setDeviceIp("192.168.10.3");
         insertRecord.setDeviceName("test");
         insertRecord.setGmtCreate(LocalDateTime.now());
-        deviceInfoDao.insert(insertRecord);
+        deviceInfoMapper.insert(insertRecord);
 
         // 使用全局异常捕获后，@Transactional依然是生效的
         throw BusinessException.builder()

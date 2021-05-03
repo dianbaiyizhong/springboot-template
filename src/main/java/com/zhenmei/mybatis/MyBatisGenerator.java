@@ -28,8 +28,8 @@ public class MyBatisGenerator {
         gc.setAuthor("nntk");
         gc.setOpen(false);
         gc.setFileOverride(true);
-        gc.setEntityName("%sDO");
-        gc.setMapperName("%sDao");
+        gc.setEntityName("%sEntity");
+        gc.setMapperName("%sMapper");
 
 
         mpg.setGlobalConfig(gc);
@@ -42,32 +42,13 @@ public class MyBatisGenerator {
         dsc.setPassword("Mm5590026");
         mpg.setDataSource(dsc);
 
-        // 自定义配置
-        InjectionConfig injectionConfig = new InjectionConfig() {
-            @Override
-            public void initMap() {
-                // to do nothing
-            }
-        };
-        // 自定义输出配置
-        List<FileOutConfig> focList = new ArrayList<>();
-        // 自定义配置会被优先输出
-        focList.add(new FileOutConfig() {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper/"
-                        + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
-            }
-        });
-
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("mybatis.generate");
         pc.setParent("com.zhenmei");
-        pc.setXml("mapper");
-        pc.setMapper("dao");
+        pc.setXml("xml");
+        pc.setMapper("mapper");
 
         mpg.setPackageInfo(pc);
 
