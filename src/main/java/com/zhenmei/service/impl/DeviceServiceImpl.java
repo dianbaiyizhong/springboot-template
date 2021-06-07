@@ -73,8 +73,12 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public void getUnSuccess() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        customDeviceMapper.updateMySelf();
         throw BusinessException.builder()
                 .message("unSuccess")
                 .clientTip("你已经抢到该站火车票")

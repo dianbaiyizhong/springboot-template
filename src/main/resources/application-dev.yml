@@ -1,9 +1,11 @@
 spring:
   datasource:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
     username: root
-    password: Mm5590026
-    url: jdbc:mysql://150.158.186.188/mamba_view?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&useTimezone=true
-    type: com.alibaba.druid.pool.DruidDataSource
+    password: test
+    url: jdbc:h2:mem:test
   jackson:
     default-property-inclusion: non_null
 
@@ -22,7 +24,8 @@ server:
 #自定义数据源
 custom:
   datasource:
+    driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: Mm5590026
-    url: jdbc:mysql://150.158.186.188/mamba_view?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&useTimezone=true
+    url: jdbc:mysql://150.158.186.188/mamba_view?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&useTimezone=true
     type: com.alibaba.druid.pool.DruidDataSource

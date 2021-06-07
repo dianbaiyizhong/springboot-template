@@ -20,6 +20,12 @@ public class DeviceInfoController {
 
     @GetMapping(value = "list")
     public void list(@Valid DeviceInfoGetParam param) {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         deviceService.listDevice(param);
     }
 
