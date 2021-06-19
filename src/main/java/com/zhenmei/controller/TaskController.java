@@ -6,10 +6,8 @@ import com.zhenmei.pojo.param.DeviceInfoGetParam;
 import com.zhenmei.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -34,5 +32,19 @@ public class TaskController {
                 .restCode(RestCode.SUCCESS)
                 .build();
 
+    }
+
+
+    @PostMapping("/upload")
+    @ResponseBody
+    public String upload(@RequestParam("file") MultipartFile file) {
+
+        System.out.println(file.getName());
+
+        throw BusinessException.builder()
+                .message("文件上传成功")
+                .clientTip("文件上传成功")
+                .restCode(RestCode.SUCCESS)
+                .build();
     }
 }
