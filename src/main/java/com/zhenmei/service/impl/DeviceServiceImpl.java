@@ -34,6 +34,7 @@ public class DeviceServiceImpl implements DeviceService {
     @Autowired
     private CustomDeviceMapper customDeviceMapper;
 
+
     @Override
     public void listDevice(DeviceInfoGetParam param) {
         Page<TDeviceInfoEntity> pager = new Page<>(param.getPage(), param.getRows());

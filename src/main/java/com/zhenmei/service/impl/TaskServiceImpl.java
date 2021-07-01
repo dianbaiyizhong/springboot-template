@@ -14,7 +14,6 @@ public class TaskServiceImpl implements TaskService {
     public void run(int index) {
 
 
-
         ThreadUtil.execAsync(new Runnable() {
             @Override
             public void run() {
@@ -23,10 +22,9 @@ public class TaskServiceImpl implements TaskService {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("_______"+index);
+                System.out.println("_______" + index);
             }
         });
-
 
 
     }
