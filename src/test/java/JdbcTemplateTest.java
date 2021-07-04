@@ -18,16 +18,21 @@ public class JdbcTemplateTest {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(ds2);
 
 
+
+
         jdbcTemplate.execute("use mamba_view");
 
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("select * from t_device_info limit 0");
 
-
         System.out.println(ArrayUtils.toString(sqlRowSet.getMetaData().getColumnNames()));
-//
+
         while (sqlRowSet.next()) {
             System.out.println(sqlRowSet.getString(1));
         }
+
+
+
+
 
 
     }
