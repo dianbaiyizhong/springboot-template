@@ -1,4 +1,8 @@
 spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-database
   datasource:
     driver-class-name: org.h2.Driver
     schema: classpath:db/schema-h2.sql
@@ -15,17 +19,3 @@ server:
   servlet:
     context-path: /
 
-#mybatis-plus:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#  mapper-locations: classpath*:com/zhenmei/mybatis/generate/mapper/*.xml  #支持逗号分割多个路劲
-
-
-#自定义数据源
-custom:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: Mm5590026
-    url: jdbc:mysql://150.158.186.188/mamba_view?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&useTimezone=true
-    type: com.alibaba.druid.pool.DruidDataSource

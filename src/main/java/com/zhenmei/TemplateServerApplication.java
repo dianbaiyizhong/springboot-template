@@ -1,20 +1,28 @@
 package com.zhenmei;
 
+import org.h2.tools.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-import java.util.TimeZone;
+import java.sql.SQLException;
 
-@SpringBootApplication
+
 @EnableAsync
+@SpringBootApplication
 public class TemplateServerApplication {
 
 
     public static void main(String[] args) {
-//        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"));
 
         SpringApplication.run(TemplateServerApplication.class, args);
 
+    }
+
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public Server h2Server() throws SQLException {
+        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092");
     }
 }

@@ -2,7 +2,7 @@ package com.zhenmei.exception.handler;
 
 import com.zhenmei.exception.SuccessEmptyDataException;
 import com.zhenmei.exception.SuccessException;
-import com.zhenmei.response.ApiResponseDataBuilder;
+import com.zhenmei.template.infrastructure.response.ApiResponseDataBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
