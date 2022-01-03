@@ -1,6 +1,6 @@
-package com.zhenmei.exception.handler;
+package com.zhenmei.template.infrastructure.exception.handler;
 
-import com.zhenmei.exception.BusinessException;
+import com.zhenmei.template.infrastructure.exception.BusinessException;
 import com.zhenmei.template.infrastructure.response.ApiResponseDataBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

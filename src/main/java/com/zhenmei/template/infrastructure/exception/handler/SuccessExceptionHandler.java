@@ -1,7 +1,7 @@
-package com.zhenmei.exception.handler;
+package com.zhenmei.template.infrastructure.exception.handler;
 
-import com.zhenmei.exception.SuccessEmptyDataException;
-import com.zhenmei.exception.SuccessException;
+import com.zhenmei.template.infrastructure.exception.SuccessEmptyDataException;
+import com.zhenmei.template.infrastructure.exception.SuccessException;
 import com.zhenmei.template.infrastructure.response.ApiResponseDataBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

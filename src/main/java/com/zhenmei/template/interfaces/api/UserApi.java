@@ -21,4 +21,11 @@ public class UserApi {
         return ApiResponseDataBuilder.success(userService.getUser(id));
     }
 
+    @GetMapping("/list")
+    public Object list() {
+
+        return ApiResponseDataBuilder.success(userService.getAllUser());
+    }
+
+
 }
