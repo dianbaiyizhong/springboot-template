@@ -9,8 +9,10 @@ public class RestCode {
     public static final RestCode SUCCESS = new RestCode(0, "success");
     public static final RestCode PARAM_ERROR = new RestCode(400001, "参数错误");
 
+    public static final RestCode BUSINESS_ERROR = new RestCode(200000);
 
     public static final RestCode UN_KNOW_ERROR = new RestCode(500000, "未知错误");
+
 
 
     public static final RestCode CODE_409001 = new RestCode(409001);

@@ -1,5 +1,6 @@
 package com.zhenmei.wsc.utils;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -13,8 +14,13 @@ public class TimeUtils {
         return Date.from(zdt.toInstant());
     }
 
-    public static Long localDateTime2Long(LocalDateTime localDateTime){
-        return  localDateTime2Date(localDateTime).getTime();
+    public static Long localDateTime2Long(LocalDateTime localDateTime) {
+        return localDateTime2Date(localDateTime).getTime();
     }
+
+    public static LocalDateTime long2LocalDateTime(Long timestamp) {
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
+    }
+
 
 }
