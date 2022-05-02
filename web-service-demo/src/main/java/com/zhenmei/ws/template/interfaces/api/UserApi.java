@@ -1,7 +1,7 @@
 package com.zhenmei.ws.template.interfaces.api;
 
 import com.zhenmei.ws.template.application.service.UserService;
-import com.zhenmei.wsc.response.ApiResponseDataBuilder;
+import com.zhenmei.wsc.response.ResultBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +18,13 @@ public class UserApi {
     @GetMapping("/{id}")
     public Object get(@PathVariable String id) {
 
-        return ApiResponseDataBuilder.success(userService.getUser(id));
+        return ResultBuilder.success(userService.getUser(id));
     }
 
     @GetMapping("/list")
     public Object list() {
 
-        return ApiResponseDataBuilder.success(userService.getAllUser());
+        return ResultBuilder.success(userService.getAllUser());
     }
 
 

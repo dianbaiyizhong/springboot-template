@@ -5,6 +5,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * 此类专门为分页数据服务
+ * @param <T>
+ */
 @Data
 @NoArgsConstructor
 public class ServiceMultiResultVO<T> {

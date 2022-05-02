@@ -2,7 +2,7 @@ package com.zhenmei.wsc.exception.handler;
 
 import com.zhenmei.wsc.constant.RestCode;
 import com.zhenmei.wsc.exception.AuthorizeException;
-import com.zhenmei.wsc.response.ApiResponseDataBuilder;
+import com.zhenmei.wsc.response.ResultBuilder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +19,7 @@ public class AuthorizeExceptionHandler {
     @ExceptionHandler(value = AuthorizeException.class)
     public Object handlerException(AuthorizeException exception, HttpServletRequest request) {
 
-        return ApiResponseDataBuilder.error(exception,request, RestCode.LOGIN_ERROR.getCode(),RestCode.LOGIN_ERROR.getMessage());
+        return ResultBuilder.error(exception,request, RestCode.LOGIN_ERROR.getCode(),RestCode.LOGIN_ERROR.getMessage());
 
     }
 }

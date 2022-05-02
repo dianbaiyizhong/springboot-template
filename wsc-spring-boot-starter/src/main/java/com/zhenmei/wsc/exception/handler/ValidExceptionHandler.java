@@ -2,7 +2,7 @@ package com.zhenmei.wsc.exception.handler;
 
 
 import com.alibaba.fastjson.JSON;
-import com.zhenmei.wsc.response.ApiResponseDataBuilder;
+import com.zhenmei.wsc.response.ResultBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -21,7 +21,7 @@ public class ValidExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ApiResponseDataBuilder.success(JSON.toJSONString(exception.getBindingResult().getFieldErrors())));
+                .body(ResultBuilder.success(JSON.toJSONString(exception.getBindingResult().getFieldErrors())));
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -30,7 +30,7 @@ public class ValidExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ApiResponseDataBuilder.success(JSON.toJSONString(exception.getBindingResult().getFieldErrors())));
+                .body(ResultBuilder.success(JSON.toJSONString(exception.getBindingResult().getFieldErrors())));
     }
 
 
@@ -39,7 +39,7 @@ public class ValidExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ApiResponseDataBuilder.success(exception.getConstraintViolations().toString()));
+                .body(ResultBuilder.success(exception.getConstraintViolations().toString()));
     }
 
 }
