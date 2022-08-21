@@ -9,8 +9,10 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>wsc-spring-boot-starter</module>
-        <module>web-service-demo</module>
+        <module>web-service-demo-ddd</module>
+        <module>wsc-spring-boot-common-starter</module>
+        <module>wsc-spring-boot-security-starter</module>
+        <module>web-service-security-demo</module>
     </modules>
     <properties>
         <!--依赖版本号管理-->
@@ -29,7 +31,6 @@
     </properties>
 
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -40,6 +41,17 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.7.20</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>commons-io</groupId>
@@ -48,6 +60,11 @@
             </dependency>
 
 
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.2</version>
+            </dependency>
 
 
             <dependency>
@@ -63,8 +80,6 @@
                 <version>${mysql.version}</version>
                 <scope>runtime</scope>
             </dependency>
-
-
 
 
             <dependency>
@@ -101,14 +116,24 @@
                 <version>1.2.6</version>
             </dependency>
 
-
-
         </dependencies>
 
 
     </dependencyManagement>
 
-
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
 
 </project>
