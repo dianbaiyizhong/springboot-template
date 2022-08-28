@@ -19,8 +19,22 @@ public class ResultBuilder {
     private ResultBuilder() {
     }
 
+
+    public static ResultDataVO build(int code, String message, Object data) {
+
+        return ResultDataVO.builder().code(code).message(message).data(data).build();
+
+    }
+
+    public static ResultDataVO build(int code, String message) {
+
+        return ResultDataVO.builder().code(code).message(message).build();
+
+    }
+
+
     /**
-     * 返回一个简单的成功对象
+     * 返回一个简单的成功对象，一般是更新，修改成功等操作
      *
      * @return
      */
@@ -64,7 +78,8 @@ public class ResultBuilder {
      */
     public static ResultDataVO error(Exception exception, HttpServletRequest request, int code, String message) {
         log.error("[Error occurred.] - [code={}, message={}] ", code, exception.getMessage());
-        log.error("print stack:", exception);
+        log.error("print stack:{}", getStackTraceByPn(exception, "com.zhenmei.wsc"));
+
         return ResultDataVO.builder()
                 .code(code)
                 .message(message)
@@ -73,6 +88,18 @@ public class ResultBuilder {
                 .timestamp(new Date())
                 .path(request.getRequestURI())
                 .build();
+    }
+
+
+    public static String getStackTraceByPn(Throwable e, String packagePrefix) {
+        StringBuilder s = new StringBuilder("\n").append(e);
+        for (StackTraceElement traceElement : e.getStackTrace()) {
+            if (!traceElement.getClassName().startsWith(packagePrefix)) {
+                break;
+            }
+            s.append("\n\tat ").append(traceElement);
+        }
+        return s.toString();
     }
 
 

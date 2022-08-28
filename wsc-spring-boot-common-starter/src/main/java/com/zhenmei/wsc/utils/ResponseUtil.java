@@ -15,7 +15,7 @@ public class ResponseUtil {
             response.setContentType("application/json; charset=utf-8");
             PrintWriter out = response.getWriter();
             //json返回
-            out.println(JSON.toJSONString(o, SerializerFeature.WriteMapNullValue));
+            out.println(JSON.toJSONString(o));
             out.flush();
             out.close();
         } catch (Exception e) {

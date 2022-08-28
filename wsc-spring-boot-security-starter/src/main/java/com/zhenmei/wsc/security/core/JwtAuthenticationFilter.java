@@ -3,6 +3,10 @@ package com.zhenmei.wsc.security.core;
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
 import com.alibaba.fastjson.JSON;
+import com.zhenmei.wsc.constant.RestCode;
+import com.zhenmei.wsc.response.ResultBuilder;
+import com.zhenmei.wsc.utils.ResponseUtil;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -14,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -22,9 +27,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        /**
-         * 这里为了配合vue-admin的前端方式，获取X-TOKEN
-         */
         String token = request.getHeader("Authorization");
         if (!StringUtils.isEmpty(token)) {
             token = token.replace("Bearer ", "");
@@ -33,8 +35,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             request.setAttribute("token", token);
             chain.doFilter(request, response);
             return;
+        } else {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            ResponseUtil.write(response, ResultBuilder.build(RestCode.NOT_LOGIN.getCode(),RestCode.NOT_LOGIN.getMessage()));
         }
-        chain.doFilter(request, response);
     }
 
     /**

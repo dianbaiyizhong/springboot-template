@@ -11,12 +11,10 @@ import java.io.PrintWriter;
 
 public class AuthEntryPoint implements AuthenticationEntryPoint {
 
-
     @Override
-    public void commence(HttpServletRequest httpServletRequest, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
+    public void commence(HttpServletRequest httpServletRequest, HttpServletResponse response, AuthenticationException e) throws IOException {
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         PrintWriter writer = response.getWriter();
-        writer.println("401");
-
+        writer.println();
     }
 }

@@ -7,18 +7,18 @@ import com.zhenmei.wsc.exception.AuthorizeException;
 import com.zhenmei.wsc.security.core.UserAuthInfo;
 import com.zhenmei.wsc.security.form.LoginForm;
 import com.zhenmei.wsc.security.service.AuthService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 
 @Service
+@Slf4j
 public class AuthServiceImpl implements AuthService {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -32,16 +32,15 @@ public class AuthServiceImpl implements AuthService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserAuthInfo userAuthInfo = (UserAuthInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             String token = JWTUtil.createToken(BeanUtil.beanToMap(userAuthInfo), "salt?".getBytes());
-            //更新登最近一次录时间
-            //将token放置请求头返回
+            // 将token放置请求头返回
             jsonObject.put("token", token);
             jsonObject.put("roles", userAuthInfo.getRoles());
-
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new AuthorizeException("账号不存在");
+            throw new AuthorizeException(e.getMessage());
         }
         return jsonObject;
 
     }
+
+
 }

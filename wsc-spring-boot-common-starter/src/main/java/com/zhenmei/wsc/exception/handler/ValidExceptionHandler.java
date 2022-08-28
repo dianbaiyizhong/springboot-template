@@ -2,6 +2,7 @@ package com.zhenmei.wsc.exception.handler;
 
 
 import com.alibaba.fastjson.JSON;
+import com.zhenmei.wsc.constant.RestCode;
 import com.zhenmei.wsc.response.ResultBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ValidExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ResultBuilder.success(JSON.toJSONString(exception.getBindingResult().getFieldErrors())));
+                .body(ResultBuilder.build(RestCode.PARAM_ERROR.getCode(), RestCode.PARAM_ERROR.getMessage(), JSON.toJSON(exception.getBindingResult().getFieldErrors())));
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -30,7 +31,7 @@ public class ValidExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ResultBuilder.success(JSON.toJSONString(exception.getBindingResult().getFieldErrors())));
+                .body(ResultBuilder.build(RestCode.PARAM_ERROR.getCode(), RestCode.PARAM_ERROR.getMessage(), JSON.toJSON(exception.getBindingResult().getFieldErrors())));
     }
 
 
@@ -39,7 +40,8 @@ public class ValidExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ResultBuilder.success(exception.getConstraintViolations().toString()));
+                .body(ResultBuilder.build(RestCode.PARAM_ERROR.getCode(), RestCode.PARAM_ERROR.getMessage(), JSON.toJSON(exception.getConstraintViolations())));
+
     }
 
 }
