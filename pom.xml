@@ -13,6 +13,7 @@
         <module>wsc-spring-boot-common-starter</module>
         <module>wsc-spring-boot-security-starter</module>
         <module>web-service-security-demo</module>
+        <module>web-service-demo</module>
     </modules>
     <properties>
         <!--依赖版本号管理-->

@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 28/08/2022 08:30:01
+ Date: 28/08/2022 16:08:40
 */
 
 SET NAMES utf8mb4;
@@ -45,44 +45,50 @@ CREATE TABLE `t_permission`  (
   `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `pid` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_permission
 -- ----------------------------
 INSERT INTO `t_permission` VALUES (1, '/news/list', 'news_list', '新闻列表', NULL);
+INSERT INTO `t_permission` VALUES (2, '/test/query', 'test_query', '普通查询', NULL);
+INSERT INTO `t_permission` VALUES (3, '/test/admin/query', 'admin_test_query', '管理员才有权限查询', NULL);
+INSERT INTO `t_permission` VALUES (4, '/test/audit/query', 'audit_test_query', '设计员才有权限查询', NULL);
 
 -- ----------------------------
 -- Table structure for t_role
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role`  (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
 INSERT INTO `t_role` VALUES (1, 'admin', '管理员');
+INSERT INTO `t_role` VALUES (2, 'audit', '设计员');
 
 -- ----------------------------
 -- Table structure for t_role_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role_permission`;
 CREATE TABLE `t_role_permission`  (
-  `id` bigint(20) NOT NULL,
-  `permission_id` bigint(20) NULL DEFAULT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `role_id` bigint(20) NULL DEFAULT NULL,
+  `permission_id` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_role_permission
 -- ----------------------------
 INSERT INTO `t_role_permission` VALUES (1, 1, 1);
+INSERT INTO `t_role_permission` VALUES (2, 1, 3);
+INSERT INTO `t_role_permission` VALUES (3, 2, 4);
 
 -- ----------------------------
 -- Table structure for t_user_role
@@ -93,11 +99,12 @@ CREATE TABLE `t_user_role`  (
   `user_id` bigint(20) NULL DEFAULT NULL,
   `role_id` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_role
 -- ----------------------------
 INSERT INTO `t_user_role` VALUES (1, 1, 1);
+INSERT INTO `t_user_role` VALUES (2, 1, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;
