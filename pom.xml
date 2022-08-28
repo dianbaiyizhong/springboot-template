@@ -18,7 +18,7 @@
         <!--依赖版本号管理-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mysql.version>8.0.15</mysql.version>
-        <spring.boot.version>2.3.8.RELEASE</spring.boot.version>
+        <spring.boot.version>2.7.3</spring.boot.version>
         <jwt.version>0.9.1</jwt.version>
         <dom4j.version>1.6.1</dom4j.version>
         <lombok.version>1.18.20</lombok.version>

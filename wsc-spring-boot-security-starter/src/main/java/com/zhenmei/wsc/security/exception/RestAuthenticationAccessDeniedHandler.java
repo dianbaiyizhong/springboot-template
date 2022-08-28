@@ -17,6 +17,5 @@ public class RestAuthenticationAccessDeniedHandler implements AccessDeniedHandle
 
         ResponseUtil.write(httpServletResponse, ResultBuilder.error(e, httpServletRequest, RestCode.ACCESS_DENIED.getCode(), RestCode.ACCESS_DENIED.getMessage()));
 
-
     }
 }
