@@ -1,4 +1,4 @@
-package com.zhenmei.wsc.security.form;
+package com.zhenmei.wsc.security.pojo.form;
 
 import lombok.Data;
 

@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: Mm5590026
-    url: jdbc:mysql://150.158.186.188/p7i_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useTimezone=true
+    password: root
+    url: jdbc:mysql://localhost/wsc_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useTimezone=true&allowPublicKeyRetrieval=true
     type: com.alibaba.druid.pool.DruidDataSource
 
 

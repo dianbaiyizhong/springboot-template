@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.zhenmei.wsc.exception.AuthorizeException;
 import com.zhenmei.wsc.security.core.CustomAuthenticationManager;
 import com.zhenmei.wsc.security.core.UserAuthInfo;
-import com.zhenmei.wsc.security.form.LoginForm;
+import com.zhenmei.wsc.security.pojo.form.LoginForm;
 import com.zhenmei.wsc.security.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

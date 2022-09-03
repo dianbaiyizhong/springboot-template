@@ -1,12 +1,8 @@
 package com.zhenmei.wsc.security.demo.controller;
 
 import com.zhenmei.wsc.response.ResultBuilder;
-import com.zhenmei.wsc.security.form.LoginForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("test")

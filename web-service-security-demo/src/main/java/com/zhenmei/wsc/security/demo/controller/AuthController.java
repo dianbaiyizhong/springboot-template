@@ -2,7 +2,7 @@ package com.zhenmei.wsc.security.demo.controller;
 
 
 import com.zhenmei.wsc.response.ResultBuilder;
-import com.zhenmei.wsc.security.form.LoginForm;
+import com.zhenmei.wsc.security.pojo.form.LoginForm;
 import com.zhenmei.wsc.security.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
