@@ -32,6 +32,11 @@ public class ResultBuilder {
 
     }
 
+    public static ResultDataVO buildSuccess(String clientTip) {
+
+        return ResultDataVO.builder().code(RestCode.SUCCESS.getCode()).message(RestCode.SUCCESS.getMessage()).clientTip(clientTip).build();
+
+    }
 
     /**
      * 返回一个简单的成功对象，一般是更新，修改成功等操作

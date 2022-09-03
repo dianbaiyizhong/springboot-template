@@ -14,9 +14,8 @@ public class SleepFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest hsr = (HttpServletRequest) servletRequest;
 
-        StringUtils.isEmpty(hsr.getHeader("X-sleep"));
 
-        Long sleep = Long.parseLong(Optional.ofNullable(hsr.getHeader("X-sleep")).orElse("0"));
+        Long sleep = Long.parseLong(Optional.ofNullable(hsr.getHeader("wsc-sleep")).orElse("0"));
 
         if (sleep != 0) {
             try {

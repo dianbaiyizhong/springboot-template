@@ -7,6 +7,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class RestCode {
     public static final RestCode SUCCESS = new RestCode(0, "success");
+
+
+
     public static final RestCode PARAM_ERROR = new RestCode(400001, "参数错误");
     public static final RestCode BUSINESS_ERROR = new RestCode(200000);
 

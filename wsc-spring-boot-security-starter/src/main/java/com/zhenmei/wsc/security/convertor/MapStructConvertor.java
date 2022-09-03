@@ -13,15 +13,17 @@ import java.util.List;
 public abstract class MapStructConvertor extends BaseConvertor {
     public static final MapStructConvertor INSTANCE = Mappers.getMapper(MapStructConvertor.class);
 
-    //    @Mapping(target = "publishDate",expression = "java(parseDate(shopDTO.getPublishDate()))")
+//    @Mapping(target = "publishDate",expression = "java(parseDate(shopDTO.getPublishDate()))")
 
     @Mappings({
-//            @Mapping(source = "gmtCreate", target = "createTime")
-            @Mapping(source = "userName", target = "userName")
+            @Mapping(source = "gmtCreate", target = "createTime", dateFormat = "yyyy-MM-dd HH:mm:ss"),
+            @Mapping(source = "userName", target = "userName"),
+            @Mapping(source = "id", target = "id")
+
 
     })
-    public abstract AdminUserDTO shopDto2shopVo(TAdminUser entity);
+    public abstract AdminUserDTO do2Dto(TAdminUser entity);
 
-    public abstract List<AdminUserDTO> shopDto2shopVos(List<TAdminUser> list);
+    public abstract List<AdminUserDTO> do2Dto(List<TAdminUser> list);
 
 }

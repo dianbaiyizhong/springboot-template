@@ -7,7 +7,7 @@ public class AdminUserDTO {
 
 
     private String userName;
-    private String passWord;
     private String createTime;
+    private Long id;
 
 }
