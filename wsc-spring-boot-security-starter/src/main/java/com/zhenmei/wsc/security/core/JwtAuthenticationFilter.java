@@ -4,6 +4,7 @@ import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             UsernamePasswordAuthenticationToken authenticationToken = getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             request.setAttribute("token", token);
+            request.setAttribute("requestUserId", authenticationToken.getPrincipal());
             chain.doFilter(request, response);
             return;
         }

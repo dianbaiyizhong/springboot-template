@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 
 @Service
@@ -35,7 +34,7 @@ public class AdminUserServiceImpl implements AdminUserService {
                 .orderByDesc(TAdminUser::getGmtCreate)
         );
 
-        return new ServiceMultiResultVO(pageInfo.getTotal(), MapStructConvertor.INSTANCE.do2Dto(pageInfo.getRecords()));
+        return new ServiceMultiResultVO(pageInfo.getTotal(), MapStructConvertor.INSTANCE.userDo2UserDto(pageInfo.getRecords()));
     }
 
     @Override

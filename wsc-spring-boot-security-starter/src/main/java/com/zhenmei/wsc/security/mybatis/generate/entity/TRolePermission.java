@@ -1,5 +1,7 @@
 package com.zhenmei.wsc.security.mybatis.generate.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
@@ -9,18 +11,19 @@ import java.io.Serializable;
  * </p>
  *
  * @author nntk
- * @since 2022-08-21
+ * @since 2022-09-04
  */
 @TableName("t_role_permission")
 public class TRolePermission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    private Long permissionId;
-
     private Long roleId;
+
+    private Long permissionId;
 
 
     public Long getId() {
@@ -31,14 +34,6 @@ public class TRolePermission implements Serializable {
         this.id = id;
     }
 
-    public Long getPermissionId() {
-        return permissionId;
-    }
-
-    public void setPermissionId(Long permissionId) {
-        this.permissionId = permissionId;
-    }
-
     public Long getRoleId() {
         return roleId;
     }
@@ -47,12 +42,20 @@ public class TRolePermission implements Serializable {
         this.roleId = roleId;
     }
 
+    public Long getPermissionId() {
+        return permissionId;
+    }
+
+    public void setPermissionId(Long permissionId) {
+        this.permissionId = permissionId;
+    }
+
     @Override
     public String toString() {
         return "TRolePermission{" +
         "id=" + id +
-        ", permissionId=" + permissionId +
         ", roleId=" + roleId +
+        ", permissionId=" + permissionId +
         "}";
     }
 }

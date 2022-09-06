@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author nntk
- * @since 2022-08-21
+ * @since 2022-09-04
  */
 @TableName("t_user_role")
 public class TUserRole implements Serializable {
