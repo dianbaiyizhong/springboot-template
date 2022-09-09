@@ -8,5 +8,8 @@ import javax.validation.constraints.NotNull;
 public class IdForm {
     @NotNull
     private Long id;
+
+    private String requestUserId;
+
 }
 
