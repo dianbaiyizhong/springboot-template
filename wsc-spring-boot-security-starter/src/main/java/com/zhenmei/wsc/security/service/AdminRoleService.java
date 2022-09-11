@@ -15,4 +15,5 @@ public interface AdminRoleService {
 
     public void authorityRole(RoleAuthorityForm form);
 
+
 }

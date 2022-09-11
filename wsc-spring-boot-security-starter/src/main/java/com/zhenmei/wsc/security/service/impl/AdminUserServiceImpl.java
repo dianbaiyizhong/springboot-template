@@ -3,9 +3,11 @@ package com.zhenmei.wsc.security.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.base.Splitter;
 import com.zhenmei.wsc.constant.RestCode;
 import com.zhenmei.wsc.exception.BusinessException;
 import com.zhenmei.wsc.form.BasePageForm;
+import com.zhenmei.wsc.form.BatchDeleteForm;
 import com.zhenmei.wsc.response.ServiceMultiResultVO;
 import com.zhenmei.wsc.security.convertor.MapStructConvertor;
 import com.zhenmei.wsc.security.mybatis.generate.entity.TAdminUser;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class AdminUserServiceImpl implements AdminUserService {
@@ -60,6 +63,17 @@ public class AdminUserServiceImpl implements AdminUserService {
                         .clientTip("已存在相同用户名")
                         .build();
             }
+        }
+    }
+
+    @Override
+    public void deleteUser(BatchDeleteForm form) {
+
+        System.out.println(form.getIds());
+        List<String> userIds = Splitter.on(',').omitEmptyStrings().splitToList(form.getIds());
+
+        for (String userId : userIds) {
+            adminUserMapper.deleteById(userId);
         }
     }
 }

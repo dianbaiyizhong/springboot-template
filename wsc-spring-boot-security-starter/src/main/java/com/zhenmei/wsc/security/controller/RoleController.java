@@ -1,6 +1,7 @@
 package com.zhenmei.wsc.security.controller;
 
 import com.zhenmei.wsc.form.BasePageForm;
+import com.zhenmei.wsc.form.BatchDeleteForm;
 import com.zhenmei.wsc.form.IdAndPageForm;
 import com.zhenmei.wsc.form.RoleAuthorityForm;
 import com.zhenmei.wsc.response.ResultBuilder;
@@ -28,6 +29,10 @@ public class RoleController {
         form.setRequestUserId(requestUserId);
         return ResultBuilder.success(adminRoleService.list(form));
     }
+
+
+
+
 
 
     @RequestMapping(value = "/role", method = RequestMethod.POST)
