@@ -16,5 +16,4 @@ public interface AdminUserService {
     public void deleteUser(BatchDeleteForm form);
 
 
-
 }

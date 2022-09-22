@@ -12,7 +12,6 @@ public interface AdminRoleService {
     public ServiceMultiResultVO listByUserId(IdAndPageForm form);
 
 
-
     public void authorityRole(RoleAuthorityForm form);
 
 
