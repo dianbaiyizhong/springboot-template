@@ -1,4 +1,4 @@
-package com.zhenmei.wsc.demo.handler;
+package com.zm.demo.handler;
 
 
 import org.apache.ibatis.type.JdbcType;
@@ -21,7 +21,9 @@ public class DateTypeHandler implements TypeHandler<String> {
     }
 
     public String getResult(ResultSet rs, String columnName) throws SQLException {
-        return rs.getDate(columnName).toString();
+        String time = rs.getDate(columnName).toString();
+        // 这里可以处理你的时间格式
+        return "_" + time;
     }
 
     public String getResult(ResultSet rs, int columnIndex) throws SQLException {
