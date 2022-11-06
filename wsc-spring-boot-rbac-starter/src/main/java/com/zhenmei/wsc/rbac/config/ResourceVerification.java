@@ -1,6 +1,16 @@
 package com.zhenmei.wsc.rbac.config;
 
+import cn.hutool.core.thread.ThreadUtil;
+import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
+import com.baomidou.mybatisplus.autoconfigure.MybatisPlusLanguageDriverAutoConfiguration;
 import com.zhenmei.wsc.rbac.mybatis.custom.mapper.PermissionDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@Component
+@Configuration
 public class ResourceVerification {
 
 
@@ -18,8 +28,10 @@ public class ResourceVerification {
     private Map<RbacRole, Set<RbacPermission>> resMap = new HashMap<>();
 
 
-    @Resource
+    @Autowired
     private PermissionDao permissionDao;
+
+
 
 
     @PostConstruct

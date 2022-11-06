@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -24,7 +25,10 @@ public class RbacAuthorityService {
     private PermissionDao permissionDao;
 
 
-    private HashMap<String, Collection<ConfigAttribute>> map = null;;
+    private HashMap<String, Collection<ConfigAttribute>> map = null;
+
+
+
 
     /**
      * 判断是否有权限

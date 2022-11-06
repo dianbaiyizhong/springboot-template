@@ -20,7 +20,6 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.util.CollectionUtils;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,14 +30,14 @@ import java.util.List;
  */
 @Configuration
 @Slf4j
-@MapperScan(basePackages = {"com.zhenmei.wsc.rbac.mybatis.generate.mapper","com.zhenmei.wsc.rbac.mybatis.custom.mapper"}, sqlSessionTemplateRef = "rbacSqlSessionTemplate")
+@MapperScan(basePackages = {"com.zhenmei.wsc.rbac.mybatis.custom.mapper", "com.zhenmei.wsc.rbac.mybatis.generate.mapper"}, sqlSessionTemplateRef = "rbacSqlSessionTemplate")
 public class MpDataSourceConfiguration {
     @Autowired
     private MybatisPlusInterceptor mybatisPlusInterceptor;
 
 
     @Bean("rbacDataSource")
-    @ConfigurationProperties(prefix = "default.datasource")
+    @ConfigurationProperties(prefix = "wsc.rbac")
     public DataSource defaultDataSource() {
         return DruidDataSourceBuilder.create().build();
     }
@@ -54,24 +53,28 @@ public class MpDataSourceConfiguration {
 
         MybatisConfiguration mybatisConfiguration = new MybatisConfiguration();
         // 日志输出
-        // mybatisConfiguration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
+        mybatisConfiguration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
         sqlSessionFactory.setConfiguration(mybatisConfiguration);
 
         return sqlSessionFactory.getObject();
     }
 
+
     public Resource[] resolveMapperLocations() {
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
         List<String> mapperLocations = new ArrayList<>();
-        mapperLocations.add("classpath:com/zhenmei/wsc/rbac/mybatis/custom/mapper/xml/*.xml");
+
         mapperLocations.add("classpath:com/zhenmei/wsc/rbac/mybatis/generate/mapper/xml/*.xml");
+        mapperLocations.add("classpath:com/zhenmei/wsc/rbac/mybatis/custom/mapper/xml/*.xml");
+
         List<Resource> resources = new ArrayList();
         if (!CollectionUtils.isEmpty(mapperLocations)) {
             for (String mapperLocation : mapperLocations) {
                 try {
                     Resource[] mappers = resourceResolver.getResources(mapperLocation);
                     resources.addAll(Arrays.asList(mappers));
-                } catch (IOException e) {
+                } catch (Exception e) {
+                    e.printStackTrace();
                     log.error("Get myBatis resources happened exception", e);
                 }
             }
