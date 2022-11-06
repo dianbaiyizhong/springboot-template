@@ -8,6 +8,7 @@ import org.springframework.core.env.Environment;
 import javax.annotation.Resource;
 
 @Configuration
+@Deprecated
 public class DataSourceConfiguration {
 
 

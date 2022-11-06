@@ -7,6 +7,10 @@ import java.util.Objects;
 @Data
 public class RbacRole {
 
+    public RbacRole(String roleName) {
+        this.roleName = roleName;
+    }
+
     private String roleName;
 
 

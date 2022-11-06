@@ -1,1 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.zhenmei.wsc.exception.handler.AuthorizeExceptionHandler,com.zhenmei.wsc.security.exception.RestAuthenticationAccessDeniedHandler,com.zhenmei.wsc.security.service.AuthService

@@ -1,12 +1,12 @@
 package com.zhenmei.wsc.rbac.config;
 
-import com.zhenmei.wsc.rbac.dao.PermissionDao;
-import com.zm.utils.mysql.MysqlConnector;
+import com.zhenmei.wsc.rbac.mybatis.custom.mapper.PermissionDao;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,9 +21,23 @@ public class ResourceVerification {
     @Resource
     private PermissionDao permissionDao;
 
+
     @PostConstruct
     public void init() {
-        permissionDao.findAll();
 
+
+        List permissionList = permissionDao.findAll();
+
+        System.out.println(permissionList);
+    }
+
+
+    public boolean valid(String role, String url) {
+        Set<RbacPermission> rbacPermissions = resMap.get(new RbacRole(role));
+        if (rbacPermissions.contains(url)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
+@Deprecated
 @ConfigurationProperties(prefix = "spring.datasource")
 public class DefaultDs {
     private String url;
