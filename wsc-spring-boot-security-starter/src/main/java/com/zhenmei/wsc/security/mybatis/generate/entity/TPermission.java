@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author nntk
- * @since 2022-09-04
+ * @since 2022-11-05
  */
 @TableName("t_permission")
 public class TPermission implements Serializable {

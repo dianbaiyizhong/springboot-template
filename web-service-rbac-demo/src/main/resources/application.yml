@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost/wsc_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useTimezone=true&allowPublicKeyRetrieval=true
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+wsc:
+  rbac:
+    use-default-ds: true
+    username: root
+    password: root
+    url: jdbc:mysql://localhost/wsc_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useTimezone=true&allowPublicKeyRetrieval=true
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+

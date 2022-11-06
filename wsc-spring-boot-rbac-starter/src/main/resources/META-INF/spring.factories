@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.zhenmei.wsc.rbac.config.ResourceVerification,com.zhenmei.wsc.rbac.config.DataSourceConfiguration,com.zhenmei.wsc.rbac.config.DefaultDs,com.zhenmei.wsc.rbac.dao.PermissionDao
