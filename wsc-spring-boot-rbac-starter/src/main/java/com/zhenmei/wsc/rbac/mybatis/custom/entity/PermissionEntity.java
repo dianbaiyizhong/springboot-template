@@ -11,6 +11,8 @@ public class PermissionEntity {
      */
     private String permissionUrl;
 
+    private String permissionName;
+
     /**
      * 角色名称
      */

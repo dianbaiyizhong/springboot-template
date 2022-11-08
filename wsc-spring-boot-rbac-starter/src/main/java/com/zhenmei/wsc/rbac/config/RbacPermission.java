@@ -8,6 +8,11 @@ import java.util.Objects;
 public class RbacPermission {
     private String permissionName;
 
+    public RbacPermission(String permissionName) {
+        this.permissionName = permissionName;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

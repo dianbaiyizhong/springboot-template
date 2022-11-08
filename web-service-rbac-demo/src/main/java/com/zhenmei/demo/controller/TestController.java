@@ -1,5 +1,6 @@
 package com.zhenmei.demo.controller;
 
+import com.zhenmei.wsc.rbac.annotion.RbacCheck;
 import com.zhenmei.wsc.rbac.mybatis.custom.mapper.PermissionDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,18 +10,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping("wx")
+@RequestMapping("test")
 @ResponseBody
-public class WxController {
+public class TestController {
 
     @Resource
     private PermissionDao permissionDao;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "/go", method = RequestMethod.GET)
     @ResponseBody
-    public Object test() {
-
-        System.out.println(permissionDao.findAll());
+    @RbacCheck("news_list")
+    public Object go() {
 
         return "上传成功";
     }

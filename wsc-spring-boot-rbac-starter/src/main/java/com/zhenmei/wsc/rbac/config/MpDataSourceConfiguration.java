@@ -53,7 +53,7 @@ public class MpDataSourceConfiguration {
 
         MybatisConfiguration mybatisConfiguration = new MybatisConfiguration();
         // 日志输出
-        mybatisConfiguration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
+        // mybatisConfiguration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
         sqlSessionFactory.setConfiguration(mybatisConfiguration);
 
         return sqlSessionFactory.getObject();

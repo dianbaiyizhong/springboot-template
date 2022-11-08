@@ -4,19 +4,21 @@
 
     <resultMap id="PermissionVoMap" type="com.zhenmei.wsc.rbac.mybatis.custom.entity.PermissionEntity">
         <result property="permissionUrl" column="url"></result>
+        <result property="permissionName" column="permission_name"></result>
         <collection property="roleNames" ofType="java.lang.String">
             <result column="role_name"></result>
         </collection>
     </resultMap>
 
     <select id="findAll" resultMap="PermissionVoMap">
-          SELECT
-        p.id,
+        SELECT
+            p.id,
             p.url,
-            r.role_name
+            r.role_name,
+            p.permission_name
         FROM
             t_role_permission rp
-            LEFT JOIN t_role r on r.id = rp.role_id
-            LEFT JOIN t_permission p on p.id = rp.permission_id
+                LEFT JOIN t_role r ON r.id = rp.role_id
+                LEFT JOIN t_permission p ON p.id = rp.permission_id
     </select>
 </mapper>
