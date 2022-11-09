@@ -10,7 +10,12 @@ import java.util.List;
 
 public interface RoleDao {
 
-    List<String> getRolesByUserId(Long userId);
+    //  List<String> getRolesByUserId(Long userId);
+
+
+    @Select(
+            "SELECT r.role_name, r.id AS role_id  FROM t_user_role tur LEFT JOIN t_role r ON r.id = tur.role_id")
+    List<UserRoleEntity> getRolesByUserId(Long userId);
 
 
     @Select(

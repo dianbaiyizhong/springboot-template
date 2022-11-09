@@ -1,4 +1,4 @@
-package com.zhenmei.wsc.rbac.entity;
+package com.zhenmei.wsc.rbac.pojo.bo;
 
 import lombok.Data;
 

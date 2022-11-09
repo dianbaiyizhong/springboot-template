@@ -1,6 +1,6 @@
 //package com.zhenmei.wsc.rbac.dao;
 //
-//import com.zhenmei.wsc.rbac.entity.PermissionEntity;
+//import com.zhenmei.wsc.rbac.pojo.bo.PermissionEntity;
 //import com.zm.utils.mysql.MysqlConnector;
 //import com.zm.utils.mysql.ResultSetUtil;
 //import org.springframework.stereotype.Repository;

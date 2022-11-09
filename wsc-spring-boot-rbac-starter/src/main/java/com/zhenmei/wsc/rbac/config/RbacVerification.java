@@ -24,7 +24,7 @@ public class RbacVerification {
 
 
     @PostConstruct
-    public void init() {
+    private void init() {
         List<PermissionEntity> permissionList = permissionDao.findAll();
         for (int i = 0; i < permissionList.size(); i++) {
             PermissionEntity entity = permissionList.get(i);
