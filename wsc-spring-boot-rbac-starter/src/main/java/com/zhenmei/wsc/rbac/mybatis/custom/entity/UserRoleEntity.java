@@ -6,5 +6,5 @@ import lombok.Data;
 public class UserRoleEntity {
 
     private String roleName;
-    private String roleId;
+    private Long roleId;
 }

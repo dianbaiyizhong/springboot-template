@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.zhenmei.wsc.rbac.config.MpDataSourceConfiguration,com.zhenmei.wsc.rbac.config.RbacVerification,com.zhenmei.wsc.rbac.aop.RbacAspect
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.zhenmei.wsc.rbac.config.MpDataSourceConfiguration,com.zhenmei.wsc.rbac.config.RbacVerification,com.zhenmei.wsc.rbac.aop.RbacAspect,com.zhenmei.wsc.rbac.controller.AuthController,com.zhenmei.wsc.rbac.service.impl.AuthServiceImpl
