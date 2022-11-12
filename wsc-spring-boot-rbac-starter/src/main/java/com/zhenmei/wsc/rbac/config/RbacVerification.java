@@ -28,9 +28,9 @@ public class RbacVerification {
         List<PermissionEntity> permissionList = permissionDao.findAll();
         for (int i = 0; i < permissionList.size(); i++) {
             PermissionEntity entity = permissionList.get(i);
-            for (int j = 0; j < entity.getRoleNames().size(); j++) {
-                String roleName = entity.getRoleNames().get(j);
-                RbacRole rbacRole = new RbacRole(roleName);
+            for (int j = 0; j < entity.getRoleIds().size(); j++) {
+                Long roleId = entity.getRoleIds().get(j);
+                RbacRole rbacRole = new RbacRole(roleId);
                 RbacPermission rbacPermission = new RbacPermission(entity.getPermissionName());
                 loadResMap(rbacRole, rbacPermission);
             }
@@ -50,8 +50,8 @@ public class RbacVerification {
     }
 
 
-    public boolean valid(String role, String url) {
-        Set<RbacPermission> rbacPermissions = resMap.get(new RbacRole(role));
+    public boolean valid(Long roleId, String url) {
+        Set<RbacPermission> rbacPermissions = resMap.get(new RbacRole(roleId));
         if (rbacPermissions.contains(url)) {
             return true;
         } else {

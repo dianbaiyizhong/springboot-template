@@ -46,6 +46,7 @@ public class AuthServiceImpl implements AuthService {
             TokenBo tokenBo = new TokenBo();
             tokenBo.setUserId(user.getId());
             tokenBo.setRoleList(roleCollect);
+            tokenBo.setCurrentRoleId(user.getCurrentRoleId());
             String token = JWTUtil.createToken(BeanUtil.beanToMap(tokenBo), "salt?".getBytes());
             loginVo.setToken(token);
             loginVo.setRoleList(roleCollect);

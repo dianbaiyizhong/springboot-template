@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author nntk
- * @since 2022-11-06
+ * @since 2022-11-12
  */
 @TableName("t_admin_user")
 public class TAdminUser implements Serializable {
@@ -27,6 +27,8 @@ public class TAdminUser implements Serializable {
     private String passWord;
 
     private LocalDateTime gmtCreate;
+
+    private Long currentRoleId;
 
 
     public Long getId() {
@@ -61,6 +63,14 @@ public class TAdminUser implements Serializable {
         this.gmtCreate = gmtCreate;
     }
 
+    public Long getCurrentRoleId() {
+        return currentRoleId;
+    }
+
+    public void setCurrentRoleId(Long currentRoleId) {
+        this.currentRoleId = currentRoleId;
+    }
+
     @Override
     public String toString() {
         return "TAdminUser{" +
@@ -68,6 +78,7 @@ public class TAdminUser implements Serializable {
         ", userName=" + userName +
         ", passWord=" + passWord +
         ", gmtCreate=" + gmtCreate +
+        ", currentRoleId=" + currentRoleId +
         "}";
     }
 }

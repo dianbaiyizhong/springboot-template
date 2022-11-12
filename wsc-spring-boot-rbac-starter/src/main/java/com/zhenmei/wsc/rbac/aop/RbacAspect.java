@@ -6,7 +6,7 @@ import cn.hutool.jwt.JWTUtil;
 import com.alibaba.fastjson.JSON;
 import com.zhenmei.wsc.rbac.annotion.RbacCheck;
 import com.zhenmei.wsc.rbac.config.RbacVerification;
-import com.zhenmei.wsc.rbac.pojo.bo.RoleBo;
+import com.zhenmei.wsc.rbac.exception.AuthorizeException;
 import com.zhenmei.wsc.rbac.pojo.bo.TokenBo;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.List;
 
 @Aspect
 @Component
@@ -61,7 +60,6 @@ public class RbacAspect {
         MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
         //获取切入点所在的方法
         Method method = signature.getMethod();
-        Object res = proceedingJoinPoint.proceed();
 
         RbacCheck rbacCheck = AnnotationUtil.getAnnotation(method, RbacCheck.class);
 
@@ -69,11 +67,12 @@ public class RbacAspect {
         JWT jwt = JWTUtil.parseToken(token);
         TokenBo principal = JSON.parseObject(jwt.getPayloads().toString(), TokenBo.class);
 
-        List<RoleBo> roleList = principal.getRoleList();
+        boolean valid = rbacVerification.valid(principal.getCurrentRoleId(), rbacCheck.value());
 
-        rbacVerification.valid(null, rbacCheck.value());
-
-
+        if (!valid) {
+            throw new AuthorizeException("无权限访问");
+        }
+        Object res = proceedingJoinPoint.proceed();
         return res;
     }
 }

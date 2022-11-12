@@ -13,6 +13,8 @@ public class PermissionEntity {
 
     private String permissionName;
 
+    private List<Long> roleIds;
+
     /**
      * 角色名称
      */
