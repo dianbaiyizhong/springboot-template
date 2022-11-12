@@ -3,7 +3,7 @@ package com.zhenmei.wsc.rbac.aop;
 import cn.hutool.core.annotation.AnnotationUtil;
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.zhenmei.wsc.rbac.annotion.RbacCheck;
 import com.zhenmei.wsc.rbac.config.RbacVerification;
 import com.zhenmei.wsc.rbac.exception.AuthorizeException;
