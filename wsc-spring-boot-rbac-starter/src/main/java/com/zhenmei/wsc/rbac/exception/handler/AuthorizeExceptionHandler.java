@@ -19,7 +19,7 @@ public class AuthorizeExceptionHandler {
     @ExceptionHandler(value = AuthorizeException.class)
     public Object handlerException(AuthorizeException exception, HttpServletRequest request) {
 
-        return ResultBuilder.error(exception,request, RestCode.LOGIN_ERROR.getCode(),RestCode.LOGIN_ERROR.getMessage());
+        return ResultBuilder.error(exception,request, RestCode.ACCESS_DENIED.getCode(),RestCode.ACCESS_DENIED.getMessage());
 
     }
 }

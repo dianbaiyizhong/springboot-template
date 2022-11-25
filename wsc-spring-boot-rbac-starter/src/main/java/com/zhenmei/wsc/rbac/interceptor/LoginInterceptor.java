@@ -21,14 +21,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (StringUtils.isEmpty(token)) {
             throw new NotLoginException("当前未登录");
         } else {
-
             JWT jwt = JWTUtil.parseToken(token);
             TokenBo principal = JSON.parseObject(jwt.getPayloads().toString(), TokenBo.class);
-
             request.setAttribute("requestUserId",principal.getUserId());
         }
-
-
         return true;
 
     }

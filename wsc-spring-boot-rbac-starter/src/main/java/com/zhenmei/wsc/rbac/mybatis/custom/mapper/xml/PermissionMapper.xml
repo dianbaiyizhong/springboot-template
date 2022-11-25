@@ -3,8 +3,8 @@
 <mapper namespace="com.zhenmei.wsc.rbac.mybatis.custom.mapper.PermissionDao">
 
     <resultMap id="PermissionVoMap" type="com.zhenmei.wsc.rbac.mybatis.custom.entity.PermissionEntity">
-        <result property="permissionUrl" column="url"></result>
-        <result property="permissionName" column="permission_name"></result>
+        <result property="permissionUrl" column="request_url"></result>
+        <result property="permissionName" column="name"></result>
         <collection property="roleIds" ofType="java.lang.Long">
             <result column="role_id"></result>
         </collection>
@@ -16,9 +16,9 @@
     <select id="findAll" resultMap="PermissionVoMap">
         SELECT
             p.id,
-            p.url,
+            p.request_url,
             r.role_name,
-            p.permission_name,
+            p.name,
             r.id as role_id
         FROM
             t_role_permission rp

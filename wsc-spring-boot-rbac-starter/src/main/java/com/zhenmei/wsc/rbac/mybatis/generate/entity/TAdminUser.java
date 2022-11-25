@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author nntk
- * @since 2022-11-12
+ * @since 2022-11-19
  */
 @TableName("t_admin_user")
 public class TAdminUser implements Serializable {

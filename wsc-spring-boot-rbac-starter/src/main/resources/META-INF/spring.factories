@@ -11,4 +11,6 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.zhenmei.wsc.rbac.service.impl.AdminUserServiceImpl,\
   com.zhenmei.wsc.rbac.config.MvcConfig,\
   com.zhenmei.wsc.rbac.controller.RoleController,\
-  com.zhenmei.wsc.rbac.service.impl.AdminRoleServiceImpl
+  com.zhenmei.wsc.rbac.service.impl.AdminRoleServiceImpl,\
+  com.zhenmei.wsc.rbac.controller.MenuController,\
+  com.zhenmei.wsc.rbac.service.impl.AdminMenuServiceImpl
