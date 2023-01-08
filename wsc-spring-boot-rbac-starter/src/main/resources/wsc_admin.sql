@@ -11,7 +11,7 @@
  Target Server Version : 80030
  File Encoding         : 65001
 
- Date: 12/11/2022 11:10:21
+ Date: 07/01/2023 16:19:59
 */
 
 SET NAMES utf8mb4;
@@ -41,21 +41,35 @@ INSERT INTO `t_admin_user` VALUES (1, 'admin', '$2a$10$nsZirEDHw/qv7j8d1oP6YeLWQ
 -- ----------------------------
 DROP TABLE IF EXISTS `t_permission`;
 CREATE TABLE `t_permission`  (
-  `id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `permission_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `pid` bigint(0) NULL DEFAULT NULL,
+  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `pid` bigint(0) NOT NULL DEFAULT 0,
+  `request_url` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '后端请求路径',
+  `request_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '后端请求方式',
+  `name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '菜单名称',
+  `title` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '菜单名称i18n',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '描述',
+  `path` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '前端页面路径',
+  `component` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '前端页面组件',
+  `icon` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '图标',
+  `show_flag` tinyint(0) NOT NULL DEFAULT 1 COMMENT '是否显示:0-隐藏;1-显示',
+  `type` tinyint(0) NOT NULL DEFAULT 1 COMMENT '权限类型:0-目录;1-菜单;2-按钮',
+  `status` tinyint(0) NOT NULL DEFAULT 1 COMMENT '状态:0-禁用;1-启用',
+  `order_no` tinyint(0) NOT NULL DEFAULT 1 COMMENT '排序',
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_permission
 -- ----------------------------
-INSERT INTO `t_permission` VALUES (1, '/news/list', 'news_list', '新闻列表', NULL);
-INSERT INTO `t_permission` VALUES (2, '/test/query', 'test_query', '普通查询', NULL);
-INSERT INTO `t_permission` VALUES (3, '/test/admin/query', 'admin_test_query', '管理员才有权限查询', NULL);
-INSERT INTO `t_permission` VALUES (4, '/test/audit/query', 'audit_test_query', '设计员才有权限查询', NULL);
+INSERT INTO `t_permission` VALUES (1, 0, '/api/dashboard', 'GET', '控制台', 'routes.dashboard.dashboard', '控制台', '/dashboard', 'LAYOUT', 'mdi-view-dashboard-outline', 1, 0, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
+INSERT INTO `t_permission` VALUES (2, 0, '/api/system', 'GET', 'rbac权限菜单', 'routes.demo.system.moduleName', '系统管理目录', '/system', 'LAYOUT', 'mdi-key-outline', 1, 0, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
+INSERT INTO `t_permission` VALUES (3, 2, '/api/users', 'GET', '账号管理', 'routes.demo.system.account', '账号管理菜单', 'account', '/demo/system/account/index', '', 1, 1, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
+INSERT INTO `t_permission` VALUES (4, 3, '/api/users', 'POST', '新增账号', '', '新增账号按钮', '', '', '', 1, 2, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
+INSERT INTO `t_permission` VALUES (5, 2, '/api/users', 'GET', '菜单管理', 'routes.demo.system.menu', '菜单管理菜单', 'menu', '/demo/system/menu/index', '', 1, 1, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
+INSERT INTO `t_permission` VALUES (6, 5, '/api/users', 'POST', '新增菜单', '', '新增菜单按钮', '', '', '', 1, 2, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
+INSERT INTO `t_permission` VALUES (7, 2, '/api/users', 'GET', '角色管理', 'routes.demo.system.role', '角色管理菜单', 'role', '/demo/system/role/index', '', 1, 1, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
 
 -- ----------------------------
 -- Table structure for t_role

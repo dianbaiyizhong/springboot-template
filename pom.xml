@@ -16,6 +16,7 @@
         <module>wsc-spring-boot-rbac-starter</module>
         <module>web-service-rbac-demo</module>
         <module>wsc-quartz-demo</module>
+        <module>mybatis-multi-datasource-demo</module>
     </modules>
     <properties>
         <!--依赖版本号管理-->
