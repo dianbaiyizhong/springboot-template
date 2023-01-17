@@ -5,11 +5,11 @@ import com.zhenmei.wsc.form.IdAndPageForm;
 import com.zhenmei.wsc.form.RoleAuthorityForm;
 import com.zhenmei.wsc.rbac.service.AdminRoleService;
 import com.zhenmei.wsc.response.ResultBuilder;
+import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/wsc/rbac")

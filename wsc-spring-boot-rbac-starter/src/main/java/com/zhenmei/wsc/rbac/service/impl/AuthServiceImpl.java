@@ -13,10 +13,10 @@ import com.zhenmei.wsc.rbac.pojo.bo.TokenBo;
 import com.zhenmei.wsc.rbac.pojo.form.LoginForm;
 import com.zhenmei.wsc.rbac.pojo.vo.LoginVo;
 import com.zhenmei.wsc.rbac.service.AuthService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 

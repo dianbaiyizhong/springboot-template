@@ -18,9 +18,9 @@ import com.zhenmei.wsc.rbac.mybatis.generate.mapper.TUserRoleMapper;
 import com.zhenmei.wsc.rbac.service.AdminRoleService;
 import com.zhenmei.wsc.response.ServiceMultiResultVO;
 
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

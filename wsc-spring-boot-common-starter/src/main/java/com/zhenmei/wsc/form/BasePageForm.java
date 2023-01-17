@@ -1,9 +1,9 @@
 package com.zhenmei.wsc.form;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RequestAttribute;
 
-import javax.validation.constraints.NotNull;
 
 @Data
 public class BasePageForm {

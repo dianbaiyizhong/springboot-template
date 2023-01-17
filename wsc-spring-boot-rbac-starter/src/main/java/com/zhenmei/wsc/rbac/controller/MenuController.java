@@ -1,16 +1,14 @@
 package com.zhenmei.wsc.rbac.controller;
 
-import com.zhenmei.wsc.form.BasePageForm;
-import com.zhenmei.wsc.form.IdAndPageForm;
-import com.zhenmei.wsc.form.RoleAuthorityForm;
 import com.zhenmei.wsc.rbac.service.AdminMenuService;
-import com.zhenmei.wsc.rbac.service.AdminRoleService;
 import com.zhenmei.wsc.response.ResultBuilder;
-import org.springframework.web.bind.annotation.*;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 

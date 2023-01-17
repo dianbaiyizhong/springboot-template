@@ -8,14 +8,14 @@ import com.zhenmei.wsc.rbac.annotion.RbacCheck;
 import com.zhenmei.wsc.rbac.config.RbacVerification;
 import com.zhenmei.wsc.rbac.exception.AuthorizeException;
 import com.zhenmei.wsc.rbac.pojo.bo.TokenBo;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
 @Aspect

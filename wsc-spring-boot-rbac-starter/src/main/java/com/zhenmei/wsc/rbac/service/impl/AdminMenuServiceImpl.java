@@ -3,9 +3,9 @@ package com.zhenmei.wsc.rbac.service.impl;
 import com.zhenmei.wsc.rbac.mybatis.generate.entity.TPermission;
 import com.zhenmei.wsc.rbac.mybatis.generate.mapper.TPermissionMapper;
 import com.zhenmei.wsc.rbac.service.AdminMenuService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.*;
 
 @Service

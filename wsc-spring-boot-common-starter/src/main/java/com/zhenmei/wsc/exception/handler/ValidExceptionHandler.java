@@ -4,6 +4,7 @@ package com.zhenmei.wsc.exception.handler;
 import com.alibaba.fastjson2.JSON;
 import com.zhenmei.wsc.constant.RestCode;
 import com.zhenmei.wsc.response.ResultBuilder;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.ConstraintViolationException;
 
 @ControllerAdvice
 @ResponseBody

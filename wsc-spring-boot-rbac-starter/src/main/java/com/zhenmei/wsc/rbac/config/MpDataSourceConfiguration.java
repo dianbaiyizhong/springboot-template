@@ -32,7 +32,6 @@ import java.util.List;
 @Slf4j
 @MapperScan(basePackages = {"com.zhenmei.wsc.rbac.mybatis.custom.mapper", "com.zhenmei.wsc.rbac.mybatis.generate.mapper"}, sqlSessionTemplateRef = "rbacSqlSessionTemplate")
 public class MpDataSourceConfiguration {
-    @Autowired
     private MybatisPlusInterceptor mybatisPlusInterceptor;
 
 

@@ -1,11 +1,11 @@
 package com.zhenmei.wsc.rbac.config;
 
 import com.zm.utils.mysql.MysqlConnector;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
-import javax.annotation.Resource;
 
 @Configuration
 @Deprecated

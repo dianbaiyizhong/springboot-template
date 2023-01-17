@@ -6,10 +6,9 @@ import com.zhenmei.wsc.rbac.pojo.form.AdminUserSaveForm;
 import com.zhenmei.wsc.rbac.service.AdminUserService;
 import com.zhenmei.wsc.response.ResultBuilder;
 
+import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/wsc/rbac")

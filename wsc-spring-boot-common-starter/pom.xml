@@ -14,8 +14,8 @@
     <artifactId>wsc-spring-boot-common-starter</artifactId>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 
@@ -51,6 +51,7 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -90,10 +91,7 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>com.zm</groupId>

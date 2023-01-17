@@ -16,9 +16,9 @@ import com.zhenmei.wsc.rbac.service.AdminUserService;
 import com.zhenmei.wsc.response.ServiceMultiResultVO;
 
 import com.zm.utils.security.BCryptUtils;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 

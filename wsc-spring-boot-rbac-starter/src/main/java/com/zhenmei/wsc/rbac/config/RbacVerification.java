@@ -3,11 +3,12 @@ package com.zhenmei.wsc.rbac.config;
 import com.google.common.collect.Sets;
 import com.zhenmei.wsc.rbac.mybatis.custom.entity.PermissionEntity;
 import com.zhenmei.wsc.rbac.mybatis.custom.mapper.PermissionDao;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+
 import java.util.*;
 
 @Configuration

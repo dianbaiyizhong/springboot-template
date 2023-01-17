@@ -9,20 +9,19 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>web-service-demo-ddd</module>
         <module>wsc-spring-boot-common-starter</module>
         <module>web-service-demo</module>
-        <module>mybatis-type-handler-demo</module>
+        <!--        <module>mybatis-type-handler-demo</module>-->
         <module>wsc-spring-boot-rbac-starter</module>
         <module>web-service-rbac-demo</module>
-        <module>wsc-quartz-demo</module>
-        <module>mybatis-multi-datasource-demo</module>
+        <!--        <module>wsc-quartz-demo</module>-->
+        <!--        <module>mybatis-multi-datasource-demo</module>-->
     </modules>
     <properties>
         <!--依赖版本号管理-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mysql.version>8.0.15</mysql.version>
-        <spring.boot.version>2.7.3</spring.boot.version>
+        <spring.boot.version>3.0.1</spring.boot.version>
         <lombok.version>1.18.24</lombok.version>
         <commons.beanutils.version>1.9.3</commons.beanutils.version>
         <fastjson2.version>2.0.18</fastjson2.version>
@@ -30,6 +29,7 @@
         <hutool.version>5.8.9</hutool.version>
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <druid-spring-boot-starter.version>1.2.14</druid-spring-boot-starter.version>
+        <mybatis-plus-version>3.5.3.1.1-SNAPSHOT</mybatis-plus-version>
     </properties>
 
 
@@ -43,11 +43,7 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
@@ -55,12 +51,10 @@
             </dependency>
 
 
-
-
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.5.2</version>
+                <version>${mybatis-plus-version}</version>
             </dependency>
 
 
@@ -91,7 +85,6 @@
                 <artifactId>commons-beanutils</artifactId>
                 <version>${commons.beanutils.version}</version>
             </dependency>
-
 
 
             <dependency>
