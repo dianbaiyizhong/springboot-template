@@ -9,8 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import java.util.Date;
 
 @EnableAsync
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-
+@SpringBootApplication
 public class DemoApplication {
     public static void main(String[] args) {
 
