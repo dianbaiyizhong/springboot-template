@@ -11,7 +11,7 @@
  Target Server Version : 80030
  File Encoding         : 65001
 
- Date: 07/01/2023 16:19:59
+ Date: 11/02/2023 14:23:57
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,7 @@ CREATE TABLE `t_admin_user`  (
   `current_role_id` bigint(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `idx_user_name`(`user_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_admin_user
@@ -70,6 +70,7 @@ INSERT INTO `t_permission` VALUES (4, 3, '/api/users', 'POST', '新增账号', '
 INSERT INTO `t_permission` VALUES (5, 2, '/api/users', 'GET', '菜单管理', 'routes.demo.system.menu', '菜单管理菜单', 'menu', '/demo/system/menu/index', '', 1, 1, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
 INSERT INTO `t_permission` VALUES (6, 5, '/api/users', 'POST', '新增菜单', '', '新增菜单按钮', '', '', '', 1, 2, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
 INSERT INTO `t_permission` VALUES (7, 2, '/api/users', 'GET', '角色管理', 'routes.demo.system.role', '角色管理菜单', 'role', '/demo/system/role/index', '', 1, 1, 1, 1, '2022-11-19 15:49:01', '2022-11-19 15:49:01');
+INSERT INTO `t_permission` VALUES (8, 2, '/admin/list', 'GET', '用户管理', 'routes.demo.system.role', '用户表查询接口', '', '', '', 1, 1, 1, 1, '2023-02-11 13:26:33', '2023-02-11 13:26:36');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -106,6 +107,7 @@ CREATE TABLE `t_role_permission`  (
 INSERT INTO `t_role_permission` VALUES (1, 1, 1);
 INSERT INTO `t_role_permission` VALUES (2, 1, 3);
 INSERT INTO `t_role_permission` VALUES (3, 2, 4);
+INSERT INTO `t_role_permission` VALUES (4, 1, 8);
 
 -- ----------------------------
 -- Table structure for t_user_role
@@ -116,7 +118,7 @@ CREATE TABLE `t_user_role`  (
   `user_id` bigint(0) NULL DEFAULT NULL,
   `role_id` bigint(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_role

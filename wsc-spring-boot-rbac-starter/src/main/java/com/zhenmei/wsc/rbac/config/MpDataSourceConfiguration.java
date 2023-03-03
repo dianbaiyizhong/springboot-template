@@ -40,6 +40,7 @@ public class MpDataSourceConfiguration {
     @Bean("rbacDataSource")
     @ConfigurationProperties(prefix = "wsc.rbac")
     public DataSource defaultDataSource() {
+
         return DruidDataSourceBuilder.create().build();
     }
 

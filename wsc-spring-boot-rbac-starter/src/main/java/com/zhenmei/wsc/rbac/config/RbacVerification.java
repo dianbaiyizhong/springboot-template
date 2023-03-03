@@ -53,7 +53,7 @@ public class RbacVerification {
 
     public boolean valid(Long roleId, String url) {
         Set<RbacPermission> rbacPermissions = resMap.get(new RbacRole(roleId));
-        if (rbacPermissions.contains(url)) {
+        if (rbacPermissions.contains(RbacPermission.builder().permissionName(url).build())) {
             return true;
         } else {
             return false;

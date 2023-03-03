@@ -11,12 +11,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 
-
 public class LoginInterceptor implements HandlerInterceptor {
 
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+
+        if (request.getRequestURI().equals("/auth/login")) {
+            return true;
+        }
+
         String token = request.getHeader("Authorization");
 
         if (StringUtils.isEmpty(token)) {
@@ -24,7 +28,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         } else {
             JWT jwt = JWTUtil.parseToken(token);
             TokenBo principal = JSON.parseObject(jwt.getPayloads().toString(), TokenBo.class);
-            request.setAttribute("requestUserId",principal.getUserId());
+            request.setAttribute("requestUserId", principal.getUserId());
         }
         return true;
 

@@ -2,6 +2,7 @@ package com.zhenmei.wsc.rbac.controller;
 
 import com.zhenmei.wsc.form.BasePageForm;
 import com.zhenmei.wsc.form.BatchDeleteForm;
+import com.zhenmei.wsc.rbac.annotion.RbacCheck;
 import com.zhenmei.wsc.rbac.pojo.form.AdminUserSaveForm;
 import com.zhenmei.wsc.rbac.service.AdminUserService;
 import com.zhenmei.wsc.response.ResultBuilder;
@@ -18,6 +19,7 @@ public class AdminUserController {
     @Resource
     private AdminUserService adminUserService;
 
+    @RbacCheck("用户管理")
     @RequestMapping(value = "/admin/list", method = RequestMethod.GET)
     public Object list(@Valid BasePageForm form) {
 

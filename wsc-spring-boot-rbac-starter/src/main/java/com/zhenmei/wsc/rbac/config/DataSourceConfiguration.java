@@ -1,10 +1,14 @@
 package com.zhenmei.wsc.rbac.config;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.zm.utils.mysql.MysqlConnector;
 import jakarta.annotation.Resource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+
+import javax.sql.DataSource;
 
 
 @Configuration
@@ -30,6 +34,8 @@ public class DataSourceConfiguration {
         }
         return new MysqlConnector(defaultDs.getUrl(), defaultDs.getUsername(), defaultDs.getPassword());
     }
+
+
 
 
 }
