@@ -1,5 +1,5 @@
 package com.zhenmei.wsc.demo.service;
 
-public interface IMyService {
+public interface MyService {
     public void test();
 }

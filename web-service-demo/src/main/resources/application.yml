@@ -2,7 +2,8 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://localhost/wsc_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useTimezone=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost/wsc_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&useTimezone=true&allowPublicKeyRetrieval=true&socketTimeout=60000
+    type: com.alibaba.druid.pool.DruidDataSource
   task:
     execution:
       pool:

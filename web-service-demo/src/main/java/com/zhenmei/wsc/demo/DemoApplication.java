@@ -11,7 +11,7 @@ import java.util.Date;
 
 @EnableAsync
 @SpringBootApplication
-@MapperScan
+@MapperScan("com.zhenmei.wsc.demo.dao")
 public class DemoApplication {
     public static void main(String[] args) {
 
